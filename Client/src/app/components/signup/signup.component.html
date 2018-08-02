@@ -1,0 +1,17 @@
+<form class="form-control">
+  <p>Email
+    <input type="text" name="email" [(ngModel)]="email" placeholder ="info@casalector.es" required>
+  </p>
+  <p>Name
+    <input type="text" name="name" [(ngModel)]="name" placeholder="Dulce Chacón" required>
+  </p>
+  <p>Password
+    <input type="password" name="password" [(ngModel)]="Password" required>
+  </p>
+  <input type="radio" name="hasRole" [(ngModel)]="Employee">Employee
+  <br>
+  <input type="radio" name="hasRole" [(ngModel)]="Admin">Admin
+  <br>
+  <input type="radio" name="hasRole" [(ngModel)]="SuperAdmin">SuperAdmin
+  <button (click)="signup()">Sign Up</button>
+</form>

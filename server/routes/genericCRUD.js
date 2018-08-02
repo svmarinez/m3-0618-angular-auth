@@ -5,8 +5,8 @@ const simpleCrud = (Model, extensionFn) => {
     let router  = express.Router();
 
     // Detect paths from model
-    let notUsedPaths = ['_id','updated_at','created_at','__v'];
-    let paths = Object.keys(Model.schema.paths).filter(e => !notUsedPaths.includes(e));
+    /* let notUsedPaths = ['_id','updated_at','created_at','__v']; */
+    /* let paths = Object.keys(Model.schema.paths).filter(e => !notUsedPaths.includes(e)); */
     
     if(extensionFn){
         router = extensionFn(router);

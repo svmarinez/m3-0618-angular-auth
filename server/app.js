@@ -59,7 +59,7 @@ app.use(require('node-sass-middleware')({
 }));
 
 app.use(session({
-  secret: 'angular auth passport secret shh',
+  secret: 'redcheeto',
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -87,8 +87,8 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const authRouter = require('./routes/auth');
 const genericCrud = require('./routes/genericCRUD');
 app.use('/api/auth', authRouter);
-app.use('/api/news', genericCrud(require('./models/News')));
 app.use('/api/user', genericCrud(require('./models/User')));
+app.use('/api/library', genericCrud(require('./models/Library')));
 
 
 

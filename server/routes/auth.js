@@ -1,8 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
 const passport = require('passport');
+const User = require('../models/User');
 
 
 const login = (req, user) => {
@@ -21,28 +21,28 @@ const login = (req, user) => {
 // SIGNUP
 router.post('/signup', (req, res, next) => {
 
-  const {username, password} = req.body;
+  const  {email, password} = req.body;
 
   // Check for non empty user or password
-  if (!username || !password){
+  if ( !email || !password){
     next(new Error('You must provide valid credentials'));
   }
 
   // Check if user exists in DB
-  User.findOne({ username })
+  User.findOne({ email })
   .then( foundUser => {
-    if (foundUser) throw new Error('Username already exists');
+    if (foundUser) throw new Error('Email already exists');
 
     const salt     = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
     return new User({
-      username,
+      email,
       password: hashPass
     }).save();
   })
   .then( savedUser => login(req, savedUser)) // Login the user using passport
-  .then( user => res.json({status: 'signup & login successfully', user})) // Answer JSON
+  .then( user => res.json({status: 'Signed up & login successfully', user})) // Answer JSON
   .catch(e => next(e));
 });
 
